@@ -14,7 +14,7 @@ public class Main implements Constants {
         int coordinateY2 = 0;
         String directionFacing = EMPTY_STRING;
         try {
-            FileInputStream inputFile = new FileInputStream(INPUT_FILE_PATH);
+            FileInputStream inputFile = new FileInputStream(args[0]);
             Scanner sc = new Scanner(inputFile);
             while (sc.hasNextLine()) {
                 String inputLine = sc.nextLine();
