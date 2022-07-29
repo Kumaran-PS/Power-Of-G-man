@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CalculatePointsTest {
+class calculatePointsTest {
 
     @Test
     void sameAxisNoTurn1(){
@@ -42,6 +42,12 @@ class CalculatePointsTest {
     void sameAxisOneTurn4(){
         CalculatePoints calculatePoints = new CalculatePoints();
         assertEquals(155,calculatePoints.calculateRemainingPower(2,5,2,1,"E"));
+    }
+
+    @Test
+    void sameAxisOneTurn5(){
+        CalculatePoints calculatePoints = new CalculatePoints();
+        assertEquals(185,calculatePoints.calculateRemainingPower(2,1,2,2,"E"));
     }
 
     @Test
