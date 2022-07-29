@@ -1,47 +1,48 @@
 package com.example.geektrust.Service;
 
+import com.example.geektrust.Model.CoordinatesData;
 import com.example.geektrust.Utils.Constants;
 
 public class CalculatePoints implements Constants {
 
     public static Direction direction = Direction.getInstance();
 
-    public int calculateRemainingPower(int startDx, int startDy, int endDx, int endDy, String directionFacing) {
+    public int calculateRemainingPower(CoordinatesData data) {
         int numberOfTurns;
-        if (Math.abs(startDx - endDx) == 0 && Math.abs(startDy - endDy) == 0) {
+        if (data.getX1() == data.getX2() && data.getY1() == data.getY2()) {
             return MAX_AVAILABLE_POWER;
         }else {
-            numberOfTurns = getNumberOfTurns(startDx, startDy, endDx, endDy, directionFacing);
-            int powerUtilised = calculatePower(startDx, startDy, endDx, endDy, numberOfTurns);
+            numberOfTurns = getNumberOfTurns(data);
+            int powerUtilised = calculatePower(data , numberOfTurns);
             return MAX_AVAILABLE_POWER - powerUtilised;
         }
     }
 
-    private static int getNumberOfTurns(int startDx, int startDy, int endDx, int endDy, String directionFacing){
+    private static int getNumberOfTurns(CoordinatesData data){
         int numberOfTurns;
-        if((startDx == endDx) || (startDy == endDy ))
-            numberOfTurns = getNumberOfTurnsSameAxis(startDx, startDy, endDx, endDy, directionFacing);
+        if((data.getX1() == data.getX2()) || (data.getY1() == data.getY2()))
+            numberOfTurns = getNumberOfTurnsSameAxis(data);
         else
-            numberOfTurns = getNumberOfTurnsDifferentAxis(startDx, startDy, endDx, endDy, directionFacing);
+            numberOfTurns = getNumberOfTurnsDifferentAxis(data);
         return numberOfTurns;
     }
 
-    private static int getNumberOfTurnsSameAxis(int startDx, int startDy, int endDx, int endDy, String directionFacing) {
-        String optimalTravelDirection = direction.getOptimalTravelDirection(startDx,startDy,endDx,endDy);
+    private static int getNumberOfTurnsSameAxis(CoordinatesData data) {
+        String optimalTravelDirection = direction.getOptimalTravelDirection(data);
         String adjacentDirection = direction.getAdjacentDirection(optimalTravelDirection);
-        if(optimalTravelDirection.equalsIgnoreCase(directionFacing)) return 0;
-        if(adjacentDirection.contains(directionFacing)) return 1;
+        if(optimalTravelDirection.equalsIgnoreCase(data.getDirectionFacing())) return 0;
+        if(adjacentDirection.contains(data.getDirectionFacing())) return 1;
         return 2;
     }
 
-    private static int getNumberOfTurnsDifferentAxis(int startDx, int startDy, int endDx, int endDy, String directionFacing) {
-        String optimalTravelDirection = direction.getOptimalTravelDirection(startDx,startDy,endDx,endDy);
-        if (optimalTravelDirection.contains(directionFacing)) return 1;
+    private static int getNumberOfTurnsDifferentAxis(CoordinatesData data) {
+        String optimalTravelDirection = direction.getOptimalTravelDirection(data);
+        if (optimalTravelDirection.contains(data.getDirectionFacing())) return 1;
         return 2;
     }
 
-    private static int calculatePower(int startDx, int startDy, int endDx, int endDy, int numberOfTurns) {
-        int coordinatesTravelled = Math.abs(endDx - startDx) + Math.abs(endDy - startDy);
+    private static int calculatePower(CoordinatesData data ,int numberOfTurns) {
+        int coordinatesTravelled = Math.abs(data.getX1() - data.getX2()) + Math.abs(data.getY1() - data.getX2());
         return (coordinatesTravelled * POINTS_FOR_MOVE) + (numberOfTurns * POINTS_FOR_TURN);
     }
 }
