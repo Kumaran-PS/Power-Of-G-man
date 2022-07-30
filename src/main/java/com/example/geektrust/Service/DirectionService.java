@@ -2,14 +2,14 @@ package com.example.geektrust.Service;
 
 import com.example.geektrust.Utils.Constants;
 
-public class Direction implements Constants {
+public class DirectionService implements Constants {
 
-    private static Direction direction = null;
-    private Direction() {}
-    public static Direction getInstance() {
-        if (direction != null) return direction;
-        direction = new Direction();
-        return direction;
+    private static DirectionService directionService = null;
+    private DirectionService() {}
+    public static DirectionService getInstance() {
+        if (directionService != null) return directionService;
+        directionService = new DirectionService();
+        return directionService;
     }
 
     public String getOptimalPath(int startDx, int startDy, int endDx, int endDy){

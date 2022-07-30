@@ -1,7 +1,7 @@
 package com.example.geektrust;
 
 import com.example.geektrust.Model.Coordinates;
-import com.example.geektrust.Service.CalculatePoints;
+import com.example.geektrust.Service.PowerService;
 import com.example.geektrust.Utils.Constants;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -33,8 +33,8 @@ public class Main implements Constants {
                     case "PRINT_POWER":
                         Coordinates coordinates = new Coordinates(coordinateX1,coordinateY1,
                                 coordinateX2,coordinateY2,directionFacing);
-                        CalculatePoints calculatePoints = new CalculatePoints();
-                        int powerLeft = calculatePoints.calculateRemainingPower(coordinates);
+                        PowerService powerService = new PowerService();
+                        int powerLeft = powerService.calculatePowerLeft(coordinates);
                         System.out.println("POWER " + powerLeft);
                         break;
                 }

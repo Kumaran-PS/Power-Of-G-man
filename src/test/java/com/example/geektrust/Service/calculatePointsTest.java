@@ -8,78 +8,78 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class calculatePointsTest {
 
     @Test
-    void sameAxisNoTurn1(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(160,calculatePoints.calculateRemainingPower(new Coordinates(2,1,2,5,"N")));
+    void sameAxisNoTurnNorthFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(160, powerService.calculatePowerLeft(new Coordinates(2,1,2,5,"N")));
     }
     @Test
-    void sameAxisOneTurn1(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(155,calculatePoints.calculateRemainingPower(new Coordinates(1,1,5,1,"S")));
+    void sameAxisOneTurnSouthFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(155, powerService.calculatePowerLeft(new Coordinates(1,1,5,1,"S")));
     }
     @Test
-    void sameAxisTwoTurn1(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(150,calculatePoints.calculateRemainingPower(new Coordinates(5,4,1,4,"E")));
+    void sameAxisTwoTurnEastFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(150, powerService.calculatePowerLeft(new Coordinates(5,4,1,4,"E")));
     }
     @Test
-    void sameAxisTwoTurn2(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(130,calculatePoints.calculateRemainingPower(new Coordinates(0,3,6,3,"W")));
+    void sameAxisTwoTurnWestFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(130, powerService.calculatePowerLeft(new Coordinates(0,3,6,3,"W")));
     }
     @Test
-    void sameAxisOneTurn2(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(155,calculatePoints.calculateRemainingPower(new Coordinates(2,1,6,1,"N")));
-    }
-
-    @Test
-    void sameAxisOneTurn3(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(155,calculatePoints.calculateRemainingPower(new Coordinates(2,1,2,5,"E")));
+    void sameAxisOneTurnNorthFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(155, powerService.calculatePowerLeft(new Coordinates(2,1,6,1,"N")));
     }
 
     @Test
-    void sameAxisOneTurn4(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(155,calculatePoints.calculateRemainingPower(new Coordinates(2,5,2,1,"E")));
+    void sameAxisOneTurnEastFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(155, powerService.calculatePowerLeft(new Coordinates(2,1,2,5,"E")));
     }
 
     @Test
-    void sameAxisOneTurn5(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(185,calculatePoints.calculateRemainingPower(new Coordinates(2,1,2,2,"E")));
+    void sameAxisOneTurnEastDirection(){
+        PowerService powerService = new PowerService();
+        assertEquals(155, powerService.calculatePowerLeft(new Coordinates(2,5,2,1,"E")));
+    }
+
+    @Test
+    void sameAxisOneEast(){
+        PowerService powerService = new PowerService();
+        assertEquals(185, powerService.calculatePowerLeft(new Coordinates(2,1,2,2,"E")));
     }
 
     @Test
     void sameStartAndEndPoint(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(200,calculatePoints.calculateRemainingPower(new Coordinates(6,3,6,3,"W")));
+        PowerService powerService = new PowerService();
+        assertEquals(200, powerService.calculatePowerLeft(new Coordinates(6,3,6,3,"W")));
     }
 
     @Test
-    void differentAxisTwoTurn1(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(170,calculatePoints.calculateRemainingPower(new Coordinates(0,3,1,4,"W")));
+    void differentAxisTwoTurnWestFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(170, powerService.calculatePowerLeft(new Coordinates(0,3,1,4,"W")));
     }
     @Test
-    void differentAxisTwoTurn2(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(100,calculatePoints.calculateRemainingPower(new Coordinates(6,1,2,6,"S")));
+    void differentAxisTwoTurnSouthFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(100, powerService.calculatePowerLeft(new Coordinates(6,1,2,6,"S")));
     }
     @Test
-    void differentAxisOneTurn1(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(140,calculatePoints.calculateRemainingPower(new Coordinates(5,1,1,2,"S")));
+    void differentAxisOneTurnSouthFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(140, powerService.calculatePowerLeft(new Coordinates(5,1,1,2,"S")));
     }
     @Test
-    void differentAxisOneTurn2(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(125,calculatePoints.calculateRemainingPower(new Coordinates(5,5,1,2,"S")));
+    void differentAxisOneTurnSouthDirection(){
+        PowerService powerService = new PowerService();
+        assertEquals(125, powerService.calculatePowerLeft(new Coordinates(5,5,1,2,"S")));
     }
     @Test
-    void differentAxisOneTurn3(){
-        CalculatePoints calculatePoints = new CalculatePoints();
-        assertEquals(115,calculatePoints.calculateRemainingPower(new Coordinates(2,5,6,1,"E")));
+    void differentAxisOneTurnEastFacing(){
+        PowerService powerService = new PowerService();
+        assertEquals(115, powerService.calculatePowerLeft(new Coordinates(2,5,6,1,"E")));
     }
 }
