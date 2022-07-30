@@ -27,7 +27,7 @@ public class CalculatePoints implements Constants {
     }
 
     private static int getNumberOfTurnsSameAxis(int startDx, int startDy, int endDx, int endDy, String directionFacing) {
-        String optimalTravelDirection = direction.getOptimalTravelDirection(startDx,startDy,endDx,endDy);
+        String optimalTravelDirection = direction.getOptimalPath(startDx,startDy,endDx,endDy);
         String adjacentDirection = direction.getAdjacentDirection(optimalTravelDirection);
         if(optimalTravelDirection.equalsIgnoreCase(directionFacing)) return 0;
         if(adjacentDirection.contains(directionFacing)) return 1;
@@ -35,7 +35,7 @@ public class CalculatePoints implements Constants {
     }
 
     private static int getNumberOfTurnsDifferentAxis(int startDx, int startDy, int endDx, int endDy, String directionFacing) {
-        String optimalTravelDirection = direction.getOptimalTravelDirection(startDx,startDy,endDx,endDy);
+        String optimalTravelDirection = direction.getOptimalPath(startDx,startDy,endDx,endDy);
         if (optimalTravelDirection.contains(directionFacing)) return 1;
         return 2;
     }

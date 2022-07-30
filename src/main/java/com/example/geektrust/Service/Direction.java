@@ -12,7 +12,7 @@ public class Direction implements Constants {
         return direction;
     }
 
-    public String getOptimalTravelDirection(int startDx, int startDy, int endDx, int endDy){
+    public String getOptimalPath(int startDx, int startDy, int endDx, int endDy){
         String optimalTravelDirection = EMPTY_STRING;
         if (endDy > startDy ) {
             if(endDx == startDx) optimalTravelDirection = NORTH;
