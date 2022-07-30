@@ -1,5 +1,6 @@
 package com.example.geektrust;
 
+import com.example.geektrust.Model.Coordinates;
 import com.example.geektrust.Service.CalculatePoints;
 import com.example.geektrust.Utils.Constants;
 import java.io.FileInputStream;
@@ -30,8 +31,10 @@ public class Main implements Constants {
                         coordinateY2 = Integer.parseInt(inputData[DESTINATION_INDEX_Y]);
                         break;
                     case "PRINT_POWER":
+                        Coordinates coordinates = new Coordinates(coordinateX1,coordinateY1,
+                                coordinateX2,coordinateY2,directionFacing);
                         CalculatePoints calculatePoints = new CalculatePoints();
-                        int powerLeft = calculatePoints.calculateRemainingPower(coordinateX1, coordinateY1, coordinateX2, coordinateY2, directionFacing);
+                        int powerLeft = calculatePoints.calculateRemainingPower(coordinates);
                         System.out.println("POWER " + powerLeft);
                         break;
                 }
